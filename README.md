@@ -48,3 +48,27 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+Project structure:
+
+app.json: 
+Contains the configuration options for the project, and is called the app config. These options change the behavior of your proejct while you are building, updating or submitting your project.
+expo object: route object containing all the app configuration
+ - name - project name - homescreen or applist
+ - slug - unique id used by expo, used for defining url of your project
+ - userInterfaceStyle - light, dark or automatic
+ - newArchEnabled - uses newer versions of react native for better performance. Bridgless architecture. Before we needed a bridge between JS and native mobile app code. This led to issues. New architecture react native allows communication without the bridge and removes performance issues.
+
+
+
+package.json: 
+This file contains the project dependencies, scripts, metadata
+
+tsconfig.json:
+This file contains the rules that typescript will use to ensure typesafety throughout the project 
+
+.gitignore:
+files which are ignored
+
+app folder:
+routing functionality similar to Next.JS. There is a tabs group which has more files.
