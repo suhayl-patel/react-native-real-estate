@@ -1,15 +1,28 @@
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, Image, TouchableOpacity, Alert } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import images from '../constants/images';
 import icons from '../constants/icons';
-
+import { login } from "@/lib/appwrite"
+import { useGlobalContext } from '@/lib/global-provider';
+import { Redirect } from 'expo-router';
 
 const SignIn = () => {
+  const { refetch, loading, isLoggedIn } = useGlobalContext();
 
-  const handleLogin = () => {
+  // goes to home page if logged in
+  if(!loading && isLoggedIn) return <Redirect href="/" />;
 
+  // Integrate a function that will fetch the user session to see if they are logged in or not, we can manually call it and handle all related states (loading, errors, etc).
+  const handleLogin = async () => {
+    const result = await login();
+
+    if(result) {
+      refetch();
+    } else {
+      Alert.alert('Error', 'Failed to login');
+    }
   };
 
   return (
